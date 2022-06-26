@@ -1,0 +1,54 @@
+#sql_title {
+    text-align: center;
+    background-color: yellowgreen;
+    border-bottom: double 4px green;
+}
+#sql_subtitle {
+    margin-bottom: 1em;
+}
+.description {
+    line-height: 1px;
+    margin-bottom: 1em;
+}
+.table_box {
+    width: 800px;
+}
+.table_name {
+    height: 10px;
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+table th, table td {
+    width: 200px;
+    border: solid 2px black;
+    text-align: right;
+    padding: auto;
+}
+table th {
+    background-color: lemonchiffon;
+}
+#sql_sentence {
+    width: 70%;
+    height: 300px;
+    border: solid 2px black;
+    overflow: scroll;
+}
+.no_tab {
+    line-height: 4px;
+}
+.one_tab {
+    line-height: 4px;
+    padding-left: 20px;
+}
+.two_tabs {
+    line-height: 4px;
+    padding-left: 40px;
+}
+#sql_return {
+    display: block;
+    padding-top: 3em;
+    font-size: small;
+}

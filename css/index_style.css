@@ -1,0 +1,11 @@
+#index_title {
+    text-align: center;
+    margin-bottom: 1em;
+    background-color: lightskyblue;
+    border-left: solid 10px darkblue;
+    border-right: solid 10px darkblue;
+    border-bottom: solid 6px darkblue;
+}
+#index_intro {
+    margin-bottom: 2em;
+}

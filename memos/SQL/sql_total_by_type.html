@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SQL 種類ごとの合計</title>
+        <link rel="stylesheet" href="../../css/sql_total_by_type.css">
+    </head>
+    <body>
+        <h1 id="sql_title">SQL</h1>
+        <h2 id="sql_subtitle">列の属性値単位で集計した数量の合計値を種類ごとに分けて抽出する。</h2>
+        <p class="description">イメージとしては、</p>
+        <p class="description">売上テーブルの商品名ごとに各月の売上数を集計して、売上月ごとに各種類の合計値を抽出するケース</p>
+        <p>環境（ORACLE11g）</p>
+        <h4>テーブルイメージ</h4>
+        <div class="table_box">
+            <p class="table_name">売上テーブル</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>売上ID</th>
+                        <th>売上日付</th>
+                        <th>商品名</th>
+                        <th>売上数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A001</td>
+                        <td>2022/04/02</td>
+                        <td>リンゴ</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>A002</td>
+                        <td>2022/04/09</td>
+                        <td>オレンジ</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>A003</td>
+                        <td>2022/04/16</td>
+                        <td>リンゴ</td>
+                        <td>47</td>
+                    </tr>
+                    <tr>
+                        <td>A004</td>
+                        <td>2022/04/23</td>
+                        <td>バナナ</td>
+                        <td>36</td>
+                    </tr>
+                    <tr>
+                        <td>A005</td>
+                        <td>2022/04/30</td>
+                        <td>オレンジ</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>A006</td>
+                        <td>2022/05/07</td>
+                        <td>バナナ</td>
+                        <td>43</td>
+                    </tr>
+                    <tr>
+                        <td>A007</td>
+                        <td>2022/05/14</td>
+                        <td>バナナ</td>
+                        <td>38</td>
+                    </tr>
+                    <tr>
+                        <td>A008</td>
+                        <td>2022/05/21</td>
+                        <td>オレンジ</td>
+                        <td>61</td>
+                    </tr>
+                    <tr>
+                        <td>A009</td>
+                        <td>2022/05/28</td>
+                        <td>リンゴ</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>A010</td>
+                        <td>2022/06/04</td>
+                        <td>バナナ</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>A011</td>
+                        <td>2022/06/11</td>
+                        <td>オレンジ</td>
+                        <td>99</td>
+                    </tr>
+                    <tr>
+                        <td>A012</td>
+                        <td>2022/06/18</td>
+                        <td>オレンジ</td>
+                        <td>74</td>
+                    </tr>
+                    <tr>
+                        <td>A013</td>
+                        <td>2022/06/25</td>
+                        <td>バナナ</td>
+                        <td>12</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table_box">
+            <p class="table_name">抽出された結合表</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>売上月</th>
+                        <th>リンゴ売上数合計</th>
+                        <th>オレンジ売上数合計</th>
+                        <th>バナナ売上数合計</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>04月</td>
+                        <td>67</td>
+                        <td>38</td>
+                        <td>36</td>
+                    </tr>
+                    <tr>
+                        <td>05月</td>
+                        <td>21</td>
+                        <td>61</td>
+                        <td>81</td>
+                    </tr>
+                    <tr>
+                        <td>06月</td>
+                        <td>0</td>
+                        <td>173</td>
+                        <td>92</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4>SQL文</h4>
+        <div id="sql_sentence">
+            <p class="no_tab">select</p>
+            <p class="one_tab">売上月 AS 売上月</p>
+            <p class="one_tab">,max(case 商品名 when 'リンゴ' then 売上数合計 else 0 end) AS リンゴ売上数合計</p>
+            <p class="one_tab">,max(case 商品名 when 'オレンジ' then 売上数合計 else 0 end) AS オレンジ売上数合計</p>
+            <p class="one_tab">,max(case 商品名 when 'バナナ' then 売上数合計 else 0 end) AS バナナ売上数合計</p>
+            <p class="no_tab">from</p>
+            <p class="one_tab">(select</p>
+            <p class="two_tabs">商品名</p>
+            <p class="two_tabs">,substr(売上日付,6,2) || '月' as 売上月</p>
+            <p class="two_tabs">,sum(売上数) as 売上数合計</p>
+            <p class="one_tab">from</p>
+            <p class="two_tabs">売上テーブル</p>
+            <p class="one_tab">group by</p>
+            <p class="two_tabs">商品名</p>
+            <p class="two_tabs">,substr(売上日付,6,2))</p>
+            <p class="no_tab">group by SAL.売上月</p>
+            <p class="no_tab">order by 売上月</p>
+        </div>
+        <a id="sql_return" href="../../index.html">＜＜戻る</a>
+    </body>
+</html>
