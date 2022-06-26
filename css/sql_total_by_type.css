@@ -7,7 +7,7 @@
     margin-bottom: 1em;
 }
 .description {
-    line-height: 1px;
+    font-size: 1rem;
     margin-bottom: 1em;
 }
 .table_box {
@@ -31,24 +31,29 @@ table th {
     background-color: lemonchiffon;
 }
 #sql_sentence {
-    width: 70%;
+    width: 800px;
     height: 300px;
     border: solid 2px black;
     overflow: scroll;
 }
 .no_tab {
-    line-height: 4px;
+    font-size: 1rem;
 }
 .one_tab {
-    line-height: 4px;
+    font-size: 1rem;
     padding-left: 20px;
 }
 .two_tabs {
-    line-height: 4px;
+    font-size: 1rem;
     padding-left: 40px;
 }
 #sql_return {
     display: block;
     padding-top: 3em;
     font-size: small;
+}
+@media screen and (max-width:480px) {
+    html {
+        font-size: 1rem;
+    }
 }

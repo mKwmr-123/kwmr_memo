@@ -9,3 +9,8 @@
 #index_intro {
     margin-bottom: 2em;
 }
+@media screen and (max-width:480px) {
+    html {
+        font-size: 1rem;
+    }
+}
