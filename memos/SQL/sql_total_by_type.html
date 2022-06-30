@@ -3,17 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title>SQL 種類ごとの合計</title>
-        <meta name="viewport" content="width=diveice-width,initial-scale=1.0">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="../../css/sql_total_by_type.css">
     </head>
     <body>
-        <h1 id="sql_title">SQL</h1>
-        <h2 id="sql_subtitle">列の属性値単位で集計した数量の合計値を種類ごとに分けて抽出する。</h2>
-        <p class="description">イメージとしては、</p>
-        <p class="description">売上テーブルの商品名ごとに各月の売上数を集計して、売上月ごとに各種類の合計値を抽出するケース</p>
-        <p>環境（ORACLE11g）</p>
-        <h4>テーブルイメージ</h4>
-        <div class="table_box">
+        <div class="block_title">
+            <h1 id="sql_title">SQL</h1>
+        </div>
+        <div class="block_intro">
+            <h2 id="sql_subtitle">列の属性値単位で集計した数量の合計値を種類ごとに分けて抽出する。</h2>
+            <p class="description">イメージとしては、</p>
+            <p class="description">売上テーブルの商品名ごとに各月の売上数を集計して、売上月ごとに各種類の合計値を抽出するケース</p>
+            <p>環境（ORACLE11g）</p>
+        </div>
+        <div class="block_table">
+            <h4>テーブルイメージ</h4>
             <p class="table_name">売上テーブル</p>
             <table class="table">
                 <thead>
@@ -105,8 +109,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="table_box">
             <p class="table_name">抽出された結合表</p>
             <table class="table">
                 <thead>
@@ -139,26 +141,26 @@
                 </tbody>
             </table>
         </div>
-        <h4>SQL文</h4>
-        <div id="sql_sentence">
-            <p class="no_tab">select</p>
-            <p class="one_tab">売上月 AS 売上月</p>
-            <p class="one_tab">,max(case 商品名 when 'リンゴ' then 売上数合計 else 0 end) AS リンゴ売上数合計</p>
-            <p class="one_tab">,max(case 商品名 when 'オレンジ' then 売上数合計 else 0 end) AS オレンジ売上数合計</p>
-            <p class="one_tab">,max(case 商品名 when 'バナナ' then 売上数合計 else 0 end) AS バナナ売上数合計</p>
-            <p class="no_tab">from</p>
-            <p class="one_tab">(select</p>
-            <p class="two_tabs">商品名</p>
-            <p class="two_tabs">,substr(売上日付,6,2) || '月' as 売上月</p>
-            <p class="two_tabs">,sum(売上数) as 売上数合計</p>
-            <p class="one_tab">from</p>
-            <p class="two_tabs">売上テーブル</p>
-            <p class="one_tab">group by</p>
-            <p class="two_tabs">商品名</p>
-            <p class="two_tabs">,substr(売上日付,6,2))</p>
-            <p class="no_tab">group by SAL.売上月</p>
-            <p class="no_tab">order by 売上月</p>
+        <div class="block_code">
+            <h4>SQL文</h4>
+            <ol class="code">
+                <li>SELECT 売上月 AS 売上月</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,MAX(CASE 商品名 WHEN 'リンゴ' THEN 売上数合計 ELSE 0 END) AS リンゴ売上数合計</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,MAX(CASE 商品名 WHEN 'オレンジ' THEN 売上数合計 ELSE 0 END) AS オレンジ売上数合計</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,MAX(CASE 商品名 WHEN 'バナナ' THEN 売上数合計 ELSE 0 END) AS バナナ売上数合計</li>
+                <li>&nbsp;FROM (SELECT 商品名</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,SUBSTR(売上日付,6,2) || '月' AS 売上月</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,SUM(売上数) AS 売上数合計</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM 売上テーブル</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY 商品名</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,SUBSTR(売上日付,6,2))</li>
+                <li>GROUP BY 売上月</li>
+                <li>ORDER BY 売上月</li>
+            </ol>
         </div>
-        <a id="sql_return" href="../../index.html">＜＜戻る</a>
+        <div class="block_return">
+            <a id="sql_return" href="../../index.html">＜＜戻る</a>
+        </div>
+        <script src="../../script/sql_total_by_type.js"></script>
     </body>
 </html>

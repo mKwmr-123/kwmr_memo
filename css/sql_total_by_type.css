@@ -1,25 +1,89 @@
+body {
+    width: 100%;
+    font-family: "游ゴシック", "YuGothic", "メイリオ", meiryo, sans-serif;
+}
+@media screen and (min-width:500px) {
+    .block_title {
+        width: 1000px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+}
+@media screen and (max-width:500px) {
+    .block_title {
+        width: 800px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+}
 #sql_title {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
     text-align: center;
     background-color: yellowgreen;
     border-bottom: double 4px green;
 }
+@media screen and (min-width:500px) {
+    .block_intro {
+        width: 1000px;
+        height: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (max-width:500px) {
+    .block_intro {
+        width: 800px;
+        height: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 #sql_subtitle {
+    width: 100%;
+    text-align: center;
     margin-bottom: 1em;
 }
 .description {
+    width: 100%;
     font-size: 1rem;
+    margin-top: -10px;
     margin-bottom: 1em;
+    line-height: 2em;
 }
-.table_box {
-    width: 800px;
+@media screen and (min-width:500px) {
+    .block_table {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (max-width:500px) {
+    .block_table {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.block_table h4 {
+    width: 100%;
+    line-height: 3rem;
+    text-align: left;
 }
 .table_name {
-    height: 10px;
+    width: 100%;
     text-align: center;
 }
 table {
+    width: 100%;
     border-collapse: collapse;
-    margin-left: 20px;
 }
 table th, table td {
     width: 200px;
@@ -28,32 +92,67 @@ table th, table td {
     padding: auto;
 }
 table th {
-    background-color: lemonchiffon;
+    background-color: lightblue;
 }
-#sql_sentence {
-    width: 800px;
-    height: 300px;
-    border: solid 2px black;
-    overflow: scroll;
+@media screen and (min-width:500px) {
+    .block_code {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: "MS Gothic";
+    }
 }
-.no_tab {
-    font-size: 1rem;
+@media screen and (max-width:500px) {
+    .block_code {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: "MS Gothic";
+    }
 }
-.one_tab {
-    font-size: 1rem;
-    padding-left: 20px;
+ol.code {
+    position: relative;
+    margin-left: 0px;
+    padding: 10px 20px 10px 45px;
+    border: none;
+    background: #2F3437;
 }
-.two_tabs {
-    font-size: 1rem;
-    padding-left: 40px;
+ol.code li {
+    padding-left: 15px;
+    border-left: 1.5px solid #000;
+    color: #fff;
+}
+.code_bl {
+    color: #2ef;
+}
+.code_gr {
+    color: #8f8;
+}
+.code_rd {
+    color: #f9f;
+}
+.code_or {
+    color: #fa2;
+}
+@media screen and (min-width:500px) {
+    .block_return {
+        width: 1000px;
+        height: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (max-width:500px) {
+    .block_return {
+        width: 800px;
+        height: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 #sql_return {
-    display: block;
+    width: 100%;
+    text-align: left;
     padding-top: 3em;
     font-size: small;
-}
-@media screen and (max-width:480px) {
-    html {
-        font-size: 1rem;
-    }
 }

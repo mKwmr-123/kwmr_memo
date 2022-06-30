@@ -4,27 +4,42 @@
         <meta charset="utf-8">
         <title>備忘録の詰合せ</title>
         <meta name="description" content="中年ITエンジニアによる、この先使えるかどうかわからないけど、とりあえず残しとこうと思った情報処理系備忘録集">
-        <meta name="viewport" content="width=diveice-width,initial-scale=1.0">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="css/index_style.css">
     </head>
     <body>
-        <h1 id="index_title">備忘録の詰合せ</h1>
-        <h3 id="index_intro">
-            IT業界で働き始めて十数年。中途でプログラマーになった中年ITエンジニアが、今まで覚えた技術の中で
-            <br>
-            「この先使えるかもしれないな」と思ったものを、とりあえず残しておく為の備忘録集<span style="color:tomato;">（自分用）</span>である。
-        </h3>
-        <h4 id="index_subtitle">＜SQL＞</h4>
-        <ul>
-            <li class="index_links">
-                <a href="memos/SQL/sql_total_by_type.html">
-                    列の属性値単位で集計した数量の合計値を種類ごとに分けて抽出する。
-                </a>
-            </li>
-        </ul>
-        <h4 id="index_subtitle">＜GAME＞</h4>
-        <ul>
-            <li class="index_links">ファミ●●のドラ●●風RPGを作る。（工事中）</li>
-        </ul>
+        <div class="block-title">
+            <h1 id="index_title">備忘録の詰合せ</h1>
+            <div id="title_img"></div>
+            <div id="title_grd"></div>
+        </div>
+        <div class="block-intro">
+            <h3 id="index_intro">
+                IT業界で働き始めて十数年。中途でプログラマーになった中年ITエンジニアが、今まで覚えた技術の中で
+                <br>
+                「この先使えるかもしれないな」と思ったものを、とりあえず残しておく為の備忘録集<span style="color:tomato;">（自分用）</span>である。
+            </h3>
+        </div>
+        <div class="block-tab">
+            <ul class="tabs">
+                <li class="tab active" id="tab1">SQL</li>
+                <li class="tab" id="tab2">GAME</li>
+            </ul>
+            <div class="contents">
+                <div class="cont active" id="tab1-cont">
+                    <ul class="cont-list">
+                        <li>
+                            <a href="memos/SQL/sql_total_by_type.html">
+                                列の属性値単位で集計した数量の合計値を種類ごとに分けて抽出する。
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cont" id="tab2-cont">
+                    <a>ファミ●●のドラ●●風RPGを作る。（工事中）</a>
+                </div>
+            </div>
+        </div>
+        <script src="./script/index.js"></script>
     </body>
 </html>
