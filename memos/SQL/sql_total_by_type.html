@@ -144,16 +144,16 @@
         <div class="block_code">
             <h4>SQL文</h4>
             <ol class="code">
-                <li>SELECT 売上月 AS 売上月</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,MAX(CASE 商品名 WHEN 'リンゴ' THEN 売上数合計 ELSE 0 END) AS リンゴ売上数合計</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,MAX(CASE 商品名 WHEN 'オレンジ' THEN 売上数合計 ELSE 0 END) AS オレンジ売上数合計</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,MAX(CASE 商品名 WHEN 'バナナ' THEN 売上数合計 ELSE 0 END) AS バナナ売上数合計</li>
-                <li>&nbsp;FROM (SELECT 商品名</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,SUBSTR(売上日付,6,2) || '月' AS 売上月</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,SUM(売上数) AS 売上数合計</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM 売上テーブル</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY 商品名</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,SUBSTR(売上日付,6,2))</li>
+                <li class="ind-2">SELECT 売上月 AS 売上月</li>
+                <li class="ind-8">,MAX(CASE 商品名 WHEN 'リンゴ' THEN 売上数合計 ELSE 0 END) AS リンゴ売上数合計</li>
+                <li class="ind-8">,MAX(CASE 商品名 WHEN 'オレンジ' THEN 売上数合計 ELSE 0 END) AS オレンジ売上数合計</li>
+                <li class="ind-8">,MAX(CASE 商品名 WHEN 'バナナ' THEN 売上数合計 ELSE 0 END) AS バナナ売上数合計</li>
+                <li class="ind-4">FROM ( SELECT 商品名</li>
+                <li class="ind-17">,SUBSTR(売上日付,6,2) || '月' AS 売上月</li>
+                <li class="ind-17">,SUM(売上数) AS 売上数合計</li>
+                <li class="ind-13">FROM 売上テーブル</li>
+                <li class="ind-9">GROUP BY 商品名</li>
+                <li class="ind-17">,SUBSTR(売上日付,6,2))</li>
                 <li>GROUP BY 売上月</li>
                 <li>ORDER BY 売上月</li>
             </ol>

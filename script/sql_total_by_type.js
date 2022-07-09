@@ -1,5 +1,14 @@
 document.querySelectorAll(".code li").forEach(li=>{
     var txt=li.textContent;
+    for (let i = 1; i < 20; i++){
+        if(li.classList.contains("ind-" + i.toString())){
+            var spc = "";
+            for (let j = 0; j < i; j++){
+                spc += "&nbsp"
+            }
+            txt = spc + txt;
+        }
+    }
     txt=txt.replaceAll("SELECT","\<span class=\"code_bl\"\>SELECT\</span\>");
     txt=txt.replaceAll("FROM","\<span class=\"code_bl\"\>FROM\</span\>");
     txt=txt.replaceAll("WHERE","\<span class=\"code_bl\"\>WHERE\</span\>");
