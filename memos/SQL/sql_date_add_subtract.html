@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SQL 日付の加減算</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="../../css/sql_date_add_subtract.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+    </head>
+    <body>
+        <div class="block_title">
+            <h1 id="sql_title">SQL</h1>
+        </div>
+        <div class="block_intro">
+            <h2 id="sql_subtitle">日に対して、1日足したり1日引いたりする方法。</h2>
+            <p class="description">TO_DATEの書式yyyyMMddに対して、加減算が行える。</p>
+            <p class="description">その後、必要に応じてCHAR型に戻す。</p>
+            <p class="description">例えば、1月1日の前日は12月31日になるし、閏年の2月28日の翌日は2月29日になる。</p>
+            <p>環境（ORACLE11g）</p>
+        </div>
+        <div class="block_code">
+            <h4>SQL文</h4>
+            <h5>1日後</h5>
+            <ol class="code">
+                <li >TO_CHAR(TO_DATE(日付, 'yyyyMMdd') + 1, 'yyyyMMdd')</li>
+            </ol>
+            <h5>1日前</h5>
+            <ol class="code">
+                <li >TO_CHAR(TO_DATE(日付, 'yyyyMMdd') - 1, 'yyyyMMdd')</li>
+            </ol>
+        </div>
+        <div class="block_return">
+            <a id="sql_return" href="../../index.html">＜＜戻る</a>
+        </div>
+        <script src="../../script/sql_indent_color.js"></script>
+    </body>
+</html>

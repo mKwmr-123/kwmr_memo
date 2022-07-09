@@ -22,7 +22,7 @@
     }
     .block_intro {
         width: 100%;
-        height: 150px;
+        height: 180px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -38,35 +38,9 @@
         margin-bottom: 1em;
         line-height: 2em;
     }
-    .block_table {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .block_table h4 {
-        width: 100%;
-        line-height: 3rem;
-        text-align: left;
-    }
-    .table_name {
-        width: 100%;
-        text-align: center;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    table th, table td {
-        width: 200px;
-        border: solid 2px black;
-        text-align: right;
-        padding: auto;
-    }
-    table th {
-        background-color: lightblue;
-    }
     .block_code {
         width: 100%;
+        margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
         font-family: "MS Gothic";
@@ -151,38 +125,6 @@
         margin-top: -12px;
         margin-bottom: 2em;
         line-height: 1em;
-    }
-    .block_table {
-        width: 100%;
-        font-size: x-small;
-        margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .block_table h4 {
-        width: 100%;
-        font-size: x-small;
-        line-height: 1rem;
-        text-align: left;
-    }
-    .table_name {
-        width: 100%;
-        font-size: x-small;
-        text-align: center;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    table th, table td {
-        width: 75px;
-        border: solid 1px black;
-        font-size: x-small;
-        text-align: right;
-        padding: auto;
-    }
-    table th {
-        background-color: lightblue;
     }
     .block_code {
         width: 100%;

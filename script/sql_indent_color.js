@@ -25,7 +25,7 @@ document.querySelectorAll(".code li").forEach(li=>{
     txt=txt.replace(/\bAS/,"\<span class=\"code_rd\"\>AS\</span\>");
     var str=txt.match(/\'\S*\'/g);
     if (str !== null) {
-        txt=txt.replaceAll(str, "\<span class=\"code_or\"\>" + str + "\</span\>");
+        str.forEach(s => txt=txt.replaceAll(s, "\<span class=\"code_or\"\>" + s + "\</span\>"));
     }
     li.innerHTML=txt;
 })
