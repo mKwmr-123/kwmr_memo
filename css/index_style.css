@@ -24,7 +24,7 @@
         height: 100%;
         top: 0;
         left: 0;
-        background: radial-gradient(#000, #fff);
+        background: radial-gradient(rgb(161, 145, 99), #fff);
         position: absolute;
         opacity: .6;
         z-index: 2;
@@ -125,7 +125,7 @@
         height: 100%;
         top: 0;
         left: 0;
-        background: radial-gradient(#000, #fff);
+        background: radial-gradient(rgb(161, 145, 99), #fff);
         position: absolute;
         opacity: .6;
         z-index: 2;
@@ -169,8 +169,8 @@
         list-style: none;
         margin-left: 0;
         display: inline-block;
-        padding-left: 1px;
-        padding-right: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
         background: #888;
         color: #fff;
         cursor: pointer;
