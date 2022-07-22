@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SQL 代表行の値の取得</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="../../css/sql_representative.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+    </head>
+    <body>
+        <div class="block_title">
+            <h1 id="sql_title">SQL</h1>
+        </div>
+        <div class="block_intro">
+            <h2 id="sql_subtitle">同じグループ内の代表行から値を取得する。</h2>
+            <p class="description">届け先が同じA社でも、部署と内線及び担当者が違う場合、その内の1箇所の部署と内線、担当者を取得するケース</p>
+            <p>環境（ORACLE11g）</p>
+        </div>
+        <div class="block_table">
+            <h4>テーブルイメージ</h4>
+            <p class="table_name">届け先テーブル</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>届け先ID</th>
+                        <th>会社名</th>
+                        <th>部署</th>
+                        <th>担当者</th>
+                        <th>内線</th>
+                        <th>納品数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>T001</td>
+                        <td>株式会社 A</td>
+                        <td>総務部</td>
+                        <td>鈴木</td>
+                        <td>122-3334</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>T002</td>
+                        <td>株式会社 A</td>
+                        <td>営業部</td>
+                        <td>田中</td>
+                        <td>141-8880</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>T003</td>
+                        <td>株式会社 B</td>
+                        <td>人事部</td>
+                        <td>佐藤</td>
+                        <td>200-1155</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>T004</td>
+                        <td>株式会社 C</td>
+                        <td>総務部</td>
+                        <td>田中</td>
+                        <td>003-2424</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>T005</td>
+                        <td>株式会社 A</td>
+                        <td>経理部</td>
+                        <td>高橋</td>
+                        <td>101-5001</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>T006</td>
+                        <td>株式会社 B</td>
+                        <td>営業部</td>
+                        <td>山本</td>
+                        <td>231-9940</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>T007</td>
+                        <td>株式会社 C</td>
+                        <td>経理部</td>
+                        <td>吉田</td>
+                        <td>002-6771</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>T008</td>
+                        <td>株式会社 C</td>
+                        <td>技術部</td>
+                        <td>上野</td>
+                        <td>015-9977</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>T009</td>
+                        <td>株式会社 A</td>
+                        <td>技術部</td>
+                        <td>山本</td>
+                        <td>187-0953</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>T010</td>
+                        <td>株式会社 B</td>
+                        <td>総務部</td>
+                        <td>加藤</td>
+                        <td>245-1138</td>
+                        <td>11</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table_name">抽出された結合表</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>会社名</th>
+                        <th>部署</th>
+                        <th>担当者</th>
+                        <th>内線</th>
+                        <th>納品合計数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>株式会社 A</td>
+                        <td>総務部</td>
+                        <td>鈴木</td>
+                        <td>122-3334</td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td>株式会社 B</td>
+                        <td>人事部</td>
+                        <td>佐藤</td>
+                        <td>200-1155</td>
+                        <td>31</td>
+                    </tr>
+                    <tr>
+                        <td>株式会社 C</td>
+                        <td>総務部</td>
+                        <td>田中</td>
+                        <td>003-2424</td>
+                        <td>28</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="block_code">
+            <h4>SQL文</h4>
+            <ol class="code">
+                <li class="ind-2">SELECT 会社名</li>
+                <li class="ind-8">,部署</li>
+                <li class="ind-8">,担当者</li>
+                <li class="ind-8">,内線</li>
+                <li class="ind-8">,納品合計数</li>
+                <li class="ind-4">FROM ( SELECT 会社名</li>
+                <li class="ind-17">,部署</li>
+                <li class="ind-17">,担当者</li>
+                <li class="ind-17">,内線</li>
+                <li class="ind-17">,SUM(納品数量) OVER (PARTITION BY 会社名) AS 納品合計数</li>
+                <li class="ind-17">,ROW_NUMBER() OVER (PARTITION BY 会社名 ORDER BY 届け先ID) AS グループNo</li>
+                <li class="ind-13">FROM 届け先テーブル )</li>
+                <li class="ind-3">WHERE グループNo = 1</li>
+                <li>ORDER BY 会社名</li>
+            </ol>
+        </div>
+        <div class="block_return">
+            <a id="sql_return" href="../../index.html">＜＜戻る</a>
+        </div>
+        <script src="../../script/sql_indent_color.js"></script>
+    </body>
+</html>

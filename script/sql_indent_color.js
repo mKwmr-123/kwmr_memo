@@ -22,6 +22,9 @@ document.querySelectorAll(".code li").forEach(li=>{
     txt=txt.replaceAll("END","\<span class=\"code_gr\"\>END\</span\>");
     txt=txt.replaceAll("SUBSTR","\<span class=\"code_gr\"\>SUBSTR\</span\>");
     txt=txt.replaceAll("SUM","\<span class=\"code_gr\"\>SUM\</span\>");
+    txt=txt.replaceAll("OVER","\<span class=\"code_gr\"\>OVER\</span\>");
+    txt=txt.replaceAll("PARTITION BY","\<span class=\"code_gr\"\>PARTITION BY\</span\>");
+    txt=txt.replaceAll("ROW_NUMBER","\<span class=\"code_gr\"\>ROW_NUMBER\</span\>");
     txt=txt.replace(/\bAS/,"\<span class=\"code_rd\"\>AS\</span\>");
     var str=txt.match(/\'\S*\'/g);
     if (str !== null) {
