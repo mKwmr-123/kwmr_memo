@@ -63,6 +63,9 @@
     .code_gr {
         color: #9f3;
     }
+    .code_or {
+        color: #fa2;
+    }
     .block_return {
         width: 100%;
         height: 30px;
@@ -147,6 +150,9 @@
     }
     .code_gr {
         color: #9f3;
+    }
+    .code_or {
+        color: #fa2;
     }
     .block_return {
         width: 100%;

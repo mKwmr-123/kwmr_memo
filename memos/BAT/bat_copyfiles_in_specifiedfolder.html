@@ -22,7 +22,7 @@
                 <li>@echo off</li>
                 <li>set GETDIR=""</li>
                 <li>set CPDIR=""</li>
-                <li>set FDTXT=folders.txt</li>
+                <li>set FDTXT='フォルダ名が書かれたファイル名をセット'</li>
                 <li>set tm=%time: =0%</li>
                 <li>set DT=%date:~0,4%%date:~5,2%%date:~8,2%_%tm:~0,2%%tm:~3,2%%tm:~6,2%</li>
                 <li></li>
@@ -35,9 +35,9 @@
                 <li>set /p INNUM=</li>
                 <li></li>
                 <li>if %INNUM% equ 1 (</li>
-                <li class="ind-3">set GETDIR=.\before\day*.log</li>
+                <li class="ind-3">set GETDIR='ファイルサーバのパス'\day*.log</li>
                 <li>) else if %INNUM% equ 2 (</li>
-                <li class="ind-3">set GETDIR=.\before2\mon*.log</li>
+                <li class="ind-3">set GETDIR='ファイルサーバのパス'\mon*.log</li>
                 <li>) else if %INNUM% equ 3 (</li>
                 <li class="ind-3">goto :TXT</li>
                 <li>) else if %INNUM% equ 0 (</li>
@@ -47,7 +47,7 @@
                 <li class="ind-3">goto :CHOICE</li>
                 <li>)</li>
                 <li></li>
-                <li>set CPDIR=.\after\%DT%</li>
+                <li>set CPDIR='格納先のパス'\%DT%</li>
                 <li>mkdir %CPDIR%</li>
                 <li></li>
                 <li>for %%f in (%GETDIR%) do (</li>
@@ -57,7 +57,7 @@
                 <li>goto :END</li>
                 <li></li>
                 <li>:TXT</li>
-                <li>set CPDIR=.\after\%DT%</li>
+                <li>set CPDIR='格納先のパス'\%DT%</li>
                 <li>for /F %%f in (%FDTXT%) do (</li>
                 <li class="ind-3">mkdir %CPDIR%\%%f</li>
                 <li class="ind-3">copy .\%%f\*.log %CPDIR%\%%f > nul</li>

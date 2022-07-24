@@ -22,5 +22,9 @@ document.querySelectorAll(".code li").forEach(li=>{
     txt=txt.replaceAll("do","\<span class=\"code_gr\"\>do\</span\>");
     txt=txt.replaceAll("copy","\<span class=\"code_gr\"\>copy\</span\>");
     txt=txt.replaceAll("exit","\<span class=\"code_bl\"\>exit\</span\>");
+    var str=txt.match(/\'\S*\'/g);
+    if (str !== null) {
+        str.forEach(s => txt=txt.replaceAll(s, "\<span class=\"code_or\"\>" + s + "\</span\>"));
+    }
     li.innerHTML=txt;
 })
