@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BAT 指定フォルダのファイルコピー</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="../../css/BAT/bat_copyfiles_in_specifiedfolder.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+    </head>
+    <body>
+        <div class="block_title">
+            <h1 id="sql_title">BAT</h1>
+        </div>
+        <div class="block_intro">
+            <h2 id="sql_subtitle">指定フォルダ内の特定ファイル(複数)をコピーする。</h2>
+            <p class="description">ファイルサーバにある大量の夜間ログファイル等を一括でローカルにコピーする為のバッチファイル。</p>
+            <p class="description">下記例は、フォルダ指定して取得するケースとフォルダ名が書かれたファイルを読み込んで取得するケース。</p>
+        </div>
+        <div class="block_code">
+            <h4>sample.bat</h4>
+            <ol class="code">
+                <li>@echo off</li>
+                <li>set GETDIR=""</li>
+                <li>set CPDIR=""</li>
+                <li>set FDTXT=folders.txt</li>
+                <li>set tm=%time: =0%</li>
+                <li>set DT=%date:~0,4%%date:~5,2%%date:~8,2%_%tm:~0,2%%tm:~3,2%%tm:~6,2%</li>
+                <li></li>
+                <li>:CHOICE</li>
+                <li>echo 取得するログを選択してください</li>
+                <li>echo 1:夜間バッチログ</li>
+                <li>echo 2:月次バックアップログ</li>
+                <li>echo 3:指定フォルダ読み込み</li>
+                <li>echo 0:終了</li>
+                <li>set /p INNUM=</li>
+                <li></li>
+                <li>if %INNUM% equ 1 (</li>
+                <li class="ind-3">set GETDIR=.\before\day*.log</li>
+                <li>) else if %INNUM% equ 2 (</li>
+                <li class="ind-3">set GETDIR=.\before2\mon*.log</li>
+                <li>) else if %INNUM% equ 3 (</li>
+                <li class="ind-3">goto :TXT</li>
+                <li>) else if %INNUM% equ 0 (</li>
+                <li class="ind-3">goto :END</li>
+                <li>) else (</li>
+                <li class="ind-3">echo 選択に誤りがあります</li>
+                <li class="ind-3">goto :CHOICE</li>
+                <li>)</li>
+                <li></li>
+                <li>set CPDIR=.\after\%DT%</li>
+                <li>mkdir %CPDIR%</li>
+                <li></li>
+                <li>for %%f in (%GETDIR%) do (</li>
+                <li class="ind-3">copy %GETDIR% %CPDIR%\%%~nxf > nul</li>
+                <li>)</li>
+                <li>echo コピーが完了しました</li>
+                <li>goto :END</li>
+                <li></li>
+                <li>:TXT</li>
+                <li>set CPDIR=.\after\%DT%</li>
+                <li>for /F %%f in (%FDTXT%) do (</li>
+                <li class="ind-3">mkdir %CPDIR%\%%f</li>
+                <li class="ind-3">copy .\%%f\*.log %CPDIR%\%%f > nul</li>
+                <li>)</li>
+                <li>echo コピーが完了しました</li>
+                <li>goto :END</li>
+                <li></li>
+                <li>:END</li>
+                <li>exit /b
+            </ol>
+        </div>
+        <div class="block_return">
+            <a id="sql_return" href="../../index.html">＜＜戻る</a>
+        </div>
+        <script src="../../script/bat_indent_color.js"></script>
+    </body>
+</html>
