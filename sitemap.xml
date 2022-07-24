@@ -5,27 +5,32 @@
 <url>
   <loc>https://mkwmr-123.github.io/kwmr_memo/</loc>
   <priority>1.0</priority>
-  <lastmod>2022-07-09T16:46:47+09:00</lastmod>
+  <lastmod>2022-07-24T10:24:20+09:00</lastmod>
 </url>
 <url>
   <loc>https://mkwmr-123.github.io/kwmr_memo/memos/SQL/sql_total_by_type.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-07-09T16:46:47+09:00</lastmod>
+  <lastmod>2022-07-24T10:24:20+09:00</lastmod>
 </url>
 <url>
   <loc>https://mkwmr-123.github.io/kwmr_memo/memos/SQL/sql_date_add_subtract.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-07-09T16:46:47+09:00</lastmod>
+  <lastmod>2022-07-24T10:24:20+09:00</lastmod>
 </url>
 <url>
   <loc>https://mkwmr-123.github.io/kwmr_memo/memos/SQL/sql_representative.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-07-09T16:46:47+09:00</lastmod>
+  <lastmod>2022-07-24T10:24:20+09:00</lastmod>
+</url>
+<url>
+  <loc>https://mkwmr-123.github.io/kwmr_memo/memos/BAT/bat_copyfiles_in_specifiedfolder.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2022-07-24T10:24:20+09:00</lastmod>
 </url>
 <url>
   <loc>https://mkwmr-123.github.io/kwmr_memo/index.html</loc>
   <priority>0.7</priority>
-  <lastmod>2022-07-09T16:46:47+09:00</lastmod>
+  <lastmod>2022-07-24T10:24:20+09:00</lastmod>
 </url>
 
 </urlset>
