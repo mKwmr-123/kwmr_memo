@@ -22,9 +22,18 @@ document.querySelectorAll(".code li").forEach(li=>{
     txt=txt.replaceAll("do","\<span class=\"code_gr\"\>do\</span\>");
     txt=txt.replaceAll("copy","\<span class=\"code_gr\"\>copy\</span\>");
     txt=txt.replaceAll("exit","\<span class=\"code_bl\"\>exit\</span\>");
+    txt=txt.replaceAll("timeout","\<span class=\"code_gr\"\>timeout\</span\>");
+    txt=txt.replaceAll("start","\<span class=\"code_gr\"\>start\</span\>");
+    txt=txt.replaceAll("subst","\<span class=\"code_gr\"\>subst\</span\>");
+    txt=txt.replaceAll("nobreak","\<span class=\"code_yl\"\>nobreak\</span\>");
+    txt=txt.replaceAll("nul","\<span class=\"code_yl\"\>nul\</span\>");
     var str=txt.match(/\'\S*\'/g);
     if (str !== null) {
         str.forEach(s => txt=txt.replaceAll(s, "\<span class=\"code_or\"\>" + s + "\</span\>"));
+    }
+    if (txt.includes("rem")) {
+        str=txt.match(/[\S| ]*/g);
+        str.forEach(s => txt=txt.replace(s, "\<span class=\"code_gy\"\>" + s + "\</span\>"));
     }
     li.innerHTML=txt;
 })

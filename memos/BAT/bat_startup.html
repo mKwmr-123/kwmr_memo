@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BAT スタートアップによる自動処理</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="../../css/BAT/bat_startup.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+    </head>
+    <body>
+        <div class="block_title">
+            <h1 id="bat_title">BAT</h1>
+        </div>
+        <div class="block_intro">
+            <h2 id="bat_subtitle">パソコン起動後のスタートアップ時に特定のアプリを自動起動させる。</h2>
+            <p class="description">メーラーやブラウザ、チャットツールなど、毎日使うツールを起動させたり、ドライブ割り当てしたりという処理をバッチで行う。</p>
+            <p class="description">作成したバッチファイルをスタートアップフォルダに格納することで起動時に自動処理される。</p>
+            <p class="description">スタートアップフォルダはエクスプローラから「shell:startup」で開く。</p>
+            <p class="description">timeoutコマンドのnobreakオプションはキー操作無効。 > nulはコマンドの実行結果を表示させないため。</p>
+            <p class="description">startの第一引数"title"を空欄指定しているのは、</p>
+            <p class="description">起動させるアプリのフォルダパスに空白が入っていた場合、フォルダパスがタイトルになったコマンドプロンプトが起動するため。</p>
+        </div>
+        <div class="block_code">
+            <h4>mystartup.bat</h4>
+            <ol class="code">
+                <li>@echo off</li>
+                <li>rem 30秒後にEdgeを起動させる</li>
+                <li>timeout 30 /nobreak > nul</li>
+                <li>start "" "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"</li>
+                <li>rem 10秒後に指定フォルダをFドライブに割り当てる</li>
+                <li>timeout 10 /nobreak > nul</li>
+                <li>subst F: C:\local\test</li>
+            </ol>
+        </div>
+        <div class="block_return">
+            <a id="bat_return" href="../../index.html">＜＜戻る</a>
+        </div>
+        <script src="../../script/BAT/bat_indent_color.js"></script>
+    </body>
+</html>
